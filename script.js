@@ -7,6 +7,9 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
+myLibrary.push(lotr)
+
 const addBookToLibrary = (title, author, pages, read) => {
     const book = new Book(title, author, pages, read)
     myLibrary.push(book)
@@ -18,15 +21,15 @@ const displayBook = () => {
 
     // Create a new div and add the necessary html elements and fill out with the array element data
     const newDiv = document.createElement('div')
-    newDiv.classList.add('book')
+    newDiv.classList.add(`book`)
     newDiv.innerHTML = 
     `<p class="title">Title: ${lastItem.title}</p>
     <p class="author">Author: ${lastItem.author}</p>
     <p class="pages">Pages: ${lastItem.pages}</p>
     <p class="read">Read: ${lastItem.read}</p>
-    <button class="del">Delete</button>
+    <button class="del" data-id=${myLibrary.indexOf(lastItem)}>Delete</button>
     <button class="status">Toggle</button>
-    `
+    `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
 }
 
@@ -86,3 +89,12 @@ const saveForm = () => {
     // Update the display to show the newly added book
     displayBook();
 }
+
+const removeBtn = (e) => {
+    console.log(myLibrary)
+    myLibrary.splice(e.target.dataset.ID, 1)
+    console.log(myLibrary)
+    console.log(`---------`)
+    document.querySelector('.book').remove()
+}
+document.querySelector(`.del`).addEventListener('click', removeBtn)
