@@ -27,7 +27,7 @@ const displayBook = () => {
     <p class="author">Author: ${lastItem.author}</p>
     <p class="pages">Pages: ${lastItem.pages}</p>
     <p class="read">Read: ${lastItem.read}</p>
-    <button class="del" data-id=${myLibrary.indexOf(lastItem)}>Delete</button>
+    <button class="del">Delete</button>
     <button class="status">Toggle</button>
     `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
@@ -55,9 +55,9 @@ const addNewBook = () => {
     </div>
     <div>
         <label for="read">Read: </label>
-        <input type="checkbox" value="true" name="read" id="read" class="read">
+        <input type="checkbox" value="Completed" name="read" id="read" class="read">
         <label for="not-read">Not read: </label>
-        <input type="checkbox" value="false" name="read" id="not-read" class="read">
+        <input type="checkbox" value="Pending" name="read" id="not-read" class="read">
     </div>
     <button type="button" form="form1" value="Submit" id="submit-me">
         Submit
@@ -89,12 +89,3 @@ const saveForm = () => {
     // Update the display to show the newly added book
     displayBook();
 }
-
-const removeBtn = (e) => {
-    console.log(myLibrary)
-    myLibrary.splice(e.target.dataset.ID, 1)
-    console.log(myLibrary)
-    console.log(`---------`)
-    document.querySelector('.book').remove()
-}
-document.querySelector(`.del`).addEventListener('click', removeBtn)
