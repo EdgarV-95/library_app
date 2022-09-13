@@ -15,93 +15,39 @@ const displayBook = () => {
     // Gets the last item added in the myLibrary array
     const lastItem = myLibrary[myLibrary.length-1]
 
-    // Create new p tags for each object element
-    let p1 = document.createElement('p')
-    p1.className = 'title'
-    p1.innerText = "Title: "
-    p1.append(lastItem.title)
-
-    let p2 = document.createElement('p')
-    p2.className = 'author'
-    p2.innerText = "Author: "
-    p2.append(lastItem.author)
-
-    let p3 = document.createElement('p')
-    p3.className = 'pages'
-    p3.innerText = "Pages: "
-    p3.append(lastItem.pages)
-
-    // Create a new div
-    let newDiv = document.createElement("div")
-    newDiv.className = 'book'
-    // Add all p tags to newDiv
-    newDiv.append(p1)
-    newDiv.append(p2)
-    newDiv.append(p3)
-    // Add the newDiv to the main body
+    // Create a new div and add the necessary html elements and fill out with the array element data
+    const newDiv = document.createElement('div')
+    newDiv.classList.add('book')
+    newDiv.innerHTML = 
+    `<p class="title">Title: ${lastItem.title}</p>
+    <p class="author">Author: ${lastItem.author}</p>
+    <p class="pages">Pages: ${lastItem.pages}</p>`
     document.getElementsByTagName("main")[0].appendChild(newDiv)
 }
 
 const addNewBook = () => {
     // Create a form
     let form = document.createElement('form')
+    form.classList.add('create-form')
     form.setAttribute('action','*')
     form.setAttribute("method", "post")
-    form.className = 'create-form'
-
-    // Create a div for each form input element
-    let div1 = document.createElement('div')
-    let div2 = document.createElement('div')
-    let div3 = document.createElement('div')
-
-    // Create an input element for Title
-    let titleLabel = document.createElement('label')
-    titleLabel.setAttribute('for', 'title')
-    titleLabel.innerText = 'Title of book: '
-    let title = document.createElement('input')
-    title.setAttribute('type', "text")
-    title.setAttribute('name', 'title')
-    title.setAttribute('id', 'title')
-    form.appendChild(div1)
-    div1.append(titleLabel) 
-    form.appendChild(div1)
-    div1.append(title)
-    
-    // Create an input element for Author
-    let authorLabel = document.createElement('label')
-    authorLabel.setAttribute('for', 'author')
-    authorLabel.innerText = 'Author name: '
-    let author = document.createElement('input')
-    author.setAttribute('type', "text")
-    author.setAttribute('name', 'author')
-    author.setAttribute('id', 'author')
-    form.appendChild(div2)
-    div2.append(authorLabel) 
-    form.appendChild(div2)
-    div2.append(author)
-
-    // Create an input element for Pages
-    let pagesLabel = document.createElement('label')
-    pagesLabel.setAttribute('for', 'pages')
-    pagesLabel.innerText = 'Page number: '
-    let pages = document.createElement('input')
-    pages.setAttribute('type', "number")
-    pages.setAttribute('name', 'pages')
-    pages.setAttribute('id', 'pages')
-    form.appendChild(div3)
-    div3.append(pagesLabel) 
-    form.appendChild(div3)
-    div3.append(pages)
-
-    // Create a submit button
-    let submit = document.createElement("button")
-    submit.setAttribute("type", "button")
-    submit.setAttribute('form', 'form1')
-    submit.setAttribute("value", "Submit")
-    submit.setAttribute('id', 'submit-me')
-    submit.innerText = 'Submit'
-    form.append(submit)
-
+    form.innerHTML =
+    `<div>
+        <label for="title">Title of book: </label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="author">Author name: </label>
+        <input type="text" name="author" id="author">
+    </div>
+    <div>
+        <label for="pages">Page number: </label>
+        <input type="number" name="pages" id="pages">
+    </div>
+    <button type="button" form="form1" value="Submit" id="submit-me">
+        Submit
+    </button>
+    `
     // Place where the add new book values appears
     document.getElementsByClassName("add-btn")[0].append(form)
 
@@ -128,9 +74,3 @@ const saveForm = () => {
     // Update the display to show the newly added book
     displayBook();
 }
-
-
-
-
-
-
