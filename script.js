@@ -5,6 +5,7 @@ function Book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
+    this.length = myLibrary.length
 }
 
 const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
@@ -22,6 +23,7 @@ const displayBook = () => {
     // Create a new div and add the necessary html elements and fill out with the array element data
     const newDiv = document.createElement('div')
     newDiv.classList.add(`book`)
+    newDiv.classList.add(`data-id=${myLibrary.length-1}`)
     newDiv.innerHTML = 
     `<p class="title">Title: ${lastItem.title}</p>
     <p class="author">Author: ${lastItem.author}</p>
@@ -88,4 +90,8 @@ const saveForm = () => {
 
     // Update the display to show the newly added book
     displayBook();
+    console.log(myLibrary)
 }
+
+// SOLUTION FOR REMOVE BOOK
+// If data-id = myLibrary,length-1 remove that book
