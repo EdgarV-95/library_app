@@ -6,8 +6,8 @@ function Book(title, author, pages, read) {
     this.pages = pages
     this.read = read
     this.changeStatus = () => {
-        if(this.read === true) this.read = false
-        else this.read = true
+        if(this.read === false) this.read = true
+        else this.read = false
     }
 }
 
@@ -102,6 +102,7 @@ const toggleStatus = (e) => {
     if (readDiv.innerHTML === 'Read: Completed') readDiv.innerHTML = 'Read: Pending'
     else readDiv.innerHTML = 'Read: Completed'
     myLibrary[e.target.dataset.id].changeStatus()
+    console.log(myLibrary[e.target.dataset.id])
 }
 document.querySelector('.container').addEventListener('click', toggleStatus)
 
