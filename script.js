@@ -1,10 +1,11 @@
-let myLibrary = []
+const myLibrary = []
 
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
+    this.length = myLibrary.length-1
 }
 
 const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
@@ -22,21 +23,40 @@ const displayBook = () => {
     // Create a new div and add the necessary html elements and fill out with the array element data
     const newDiv = document.createElement('div')
     newDiv.classList.add(`book`)
+    newDiv.setAttribute(`data-id`, `${myLibrary.length-1}`)
     newDiv.innerHTML = 
     `<p class="title">Title: ${lastItem.title}</p>
     <p class="author">Author: ${lastItem.author}</p>
     <p class="pages">Pages: ${lastItem.pages}</p>
     <p class="read">Read: ${lastItem.read}</p>
-    <button class="del">Delete</button>
+    <button class="del" data-id=${myLibrary.length-1}>Delete</button>
     <button class="status">Toggle</button>
     `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
 }
 
+// Function to create a dynamic form and save it's values
+const saveForm = () => {
+    // Get the value of each form input and save it into a variable
+    titleValue = document.querySelector('#title').value
+    authorValue = document.querySelector('#author').value
+    pagesValue = document.querySelector('#pages').value
+    readValue = document.querySelector('.read:checked').value
+
+    // Create a new Book object with the values
+    addBookToLibrary(titleValue, authorValue, pagesValue, readValue)
+
+    // Remove form from html after submit btn has been clicked
+    document.querySelector('.create-form').remove();
+
+    // Update the display to show the newly added book
+    displayBook();
+}
+
 // Function to ADD new book
 const addNewBook = () => {
     // Create a form
-    let form = document.createElement('form')
+    const form = document.createElement('form')
     form.classList.add('create-form')
     form.setAttribute('action','*')
     form.setAttribute("method", "post")
@@ -72,20 +92,19 @@ const addNewBook = () => {
 const addNewBtn = document.querySelector('.add-new')
 addNewBtn.addEventListener('click', addNewBook)
 
-// Function to create a dynamic form and save it's values
-const saveForm = () => {
-    // Get the value of each form input and save it into a variable
-    titleValue = document.querySelector('#title').value
-    authorValue = document.querySelector('#author').value
-    pagesValue = document.querySelector('#pages').value
-    readValue = document.querySelector('.read:checked').value
+// Function to REMOVE a book
+const removeBook = (e) => {
+    const delBtn = document.body.querySelector('.del[data-id="' + e.target.dataset.id + '"]')
+    const bookDiv = document.body.querySelector('.book[data-id="' + e.target.dataset.id + '"]')
 
-    // Create a new Book object with the values
-    addBookToLibrary(titleValue, authorValue, pagesValue, readValue)
-
-    // Remove form from html after submit btn has been clicked
-    document.querySelector('.create-form').remove();
-
-    // Update the display to show the newly added book
-    displayBook();
+    if(e.target === delBtn) {
+        bookDiv.remove()
+        myLibrary.splice(e.target.dataset.id, 1)
+    }
 }
+document.querySelector('.container').addEventListener('click', removeBook)
+
+// function myLibraryTest() {
+//     console.log(myLibrary);
+// }
+// document.querySelector('.test').addEventListener('click', myLibraryTest)
