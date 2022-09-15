@@ -12,7 +12,11 @@ function Book(title, author, pages, read) {
 }
 
 const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
+const dune = new Book(`Title: Dune`, `Author: Frank Herbert`, `Pages: 412`, `Read: true`)
+const legend = new Book(`Title: I Am Legend`, `Author: Richard Matheson`, `Pages: 160`, `Read: true`)
 myLibrary.push(lotr)
+myLibrary.push(dune)
+myLibrary.push(legend)
 
 const addBookToLibrary = (title, author, pages, read) => {
     const book = new Book(title, author, pages, read)
