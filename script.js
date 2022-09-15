@@ -5,7 +5,10 @@ function Book(title, author, pages, read) {
     this.author = author
     this.pages = pages
     this.read = read
-    this.length = myLibrary.length-1
+    this.changeStatus = () => {
+        if(this.read === true) this.read = false
+        else this.read = true
+    }
 }
 
 const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
@@ -28,9 +31,9 @@ const displayBook = () => {
     `<p class="title">Title: ${lastItem.title}</p>
     <p class="author">Author: ${lastItem.author}</p>
     <p class="pages">Pages: ${lastItem.pages}</p>
-    <p class="read">Read: ${lastItem.read}</p>
+    <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
     <button class="del" data-id=${myLibrary.length-1}>Delete</button>
-    <button class="status">Toggle</button>
+    <button class="status" data-id=${myLibrary.length-1}>Toggle</button>
     `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
 }
@@ -92,6 +95,16 @@ const addNewBook = () => {
 const addNewBtn = document.querySelector('.add-new')
 addNewBtn.addEventListener('click', addNewBook)
 
+// Function to TOGGLE read and unread status
+const toggleStatus = (e) => {
+    const readDiv = document.body.querySelector('.read[data-id="' + e.target.dataset.id + '"]')
+
+    if (readDiv.innerHTML === 'Read: Completed') readDiv.innerHTML = 'Read: Pending'
+    else readDiv.innerHTML = 'Read: Completed'
+    myLibrary[e.target.dataset.id].changeStatus()
+}
+document.querySelector('.container').addEventListener('click', toggleStatus)
+
 // Function to REMOVE a book
 const removeBook = (e) => {
     const delBtn = document.body.querySelector('.del[data-id="' + e.target.dataset.id + '"]')
@@ -103,8 +116,3 @@ const removeBook = (e) => {
     }
 }
 document.querySelector('.container').addEventListener('click', removeBook)
-
-// function myLibraryTest() {
-//     console.log(myLibrary);
-// }
-// document.querySelector('.test').addEventListener('click', myLibraryTest)
