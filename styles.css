@@ -81,6 +81,7 @@ button {
 
 .book > p {
     padding-left: 2vw;
+    font-weight: bold;
 }
 
 .book-btns {

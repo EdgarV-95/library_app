@@ -86,7 +86,7 @@ const addNewBook = () => {
         <label for="read">Read: </label>
         <input type="checkbox" value="Completed" name="read" id="read" class="read">
         <label for="not-read">Not read: </label>
-        <input type="checkbox" value="Pending" name="read" id="not-read" class="read">
+        <input type="checkbox" value="Not Read" name="read" id="not-read" class="read">
     </div>
     <button type="button" form="form1" value="Submit" id="submit-me">
         Submit
@@ -108,9 +108,12 @@ const toggleStatus = (e) => {
     const bookDiv = document.body.querySelector('.book[data-id="' + e.target.dataset.id + '"]')
 
     if (readDiv.innerHTML === 'Read: Completed') {
-        readDiv.innerHTML = 'Read: Pending'
+        readDiv.innerHTML = 'Read: Not Read'
         toggleIcon.src = "resources/toggle-switch-off.png"
-        bookDiv.style.background = "#fffbfb"
+        color_1 = "rgba(214, 33, 33)"
+        color_2 = "rgba(199, 44, 44)"
+        color_3 = "rgba(58, 17, 17)"
+        bookDiv.style.backgroundImage = "linear-gradient(135deg, "+ color_1 +"0%, "+ color_2 +"50%, "+ color_3 + "100%)"
 
     } else {
         readDiv.innerHTML = 'Read: Completed'
