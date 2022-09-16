@@ -11,9 +11,24 @@ header {
     background-color: #fffbfb;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;
     display: flex;
-    justify-content: center;
-    padding-top: 4.5vh;
-    padding-bottom: 4.5vh;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 3vh;
+    padding-bottom: 3.5vh;
+}
+
+h1 {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.login-form {
+    display: flex;
+    gap: 2vw
+}
+
+h2 {
+    cursor: pointer;
 }
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
@@ -22,10 +37,6 @@ header {
 
 body {
     background-color: #f0eef1;
-}
-
-button {
-    border: none;
 }
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
@@ -37,11 +48,12 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 4.5vh;
-    padding-bottom: 4.5vh;
+    padding-top: 3vh;
+    padding-bottom: 3.5vh;
 }
 
 .add-new {
+    border: none;
     background-color: #2596be;
     color: black;
     font-weight: bold;
@@ -59,16 +71,16 @@ button {
 .container {
     display: flex;
     justify-content: start;
-    gap: 4vw;
+    gap: 2vw;
     flex-wrap: wrap;
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding-left: 12vw;
 }
 
 .book {
     cursor: pointer;
     background: linear-gradient(135deg, rgba(24, 77, 104, 0.8) 0%, rgba(87, 202, 133, 0.8) 100%);
     box-shadow: rgb(138, 130, 130) 1px 2px 2px 2px;
+    border-radius: 20px;
     height: 35vh;
     width: 15vw;
     display: flex;
@@ -87,7 +99,7 @@ button {
 .book-btns {
     width: 80%;
     padding-top: 5vh;
-    margin-left: 1vw;
+    margin-left: 1.5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
