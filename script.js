@@ -36,8 +36,10 @@ const displayBook = () => {
     <p class="author">Author: ${lastItem.author}</p>
     <p class="pages">Pages: ${lastItem.pages}</p>
     <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
-    <button class="del" data-id=${myLibrary.length-1}>Delete</button>
-    <button class="status" data-id=${myLibrary.length-1}>Toggle</button>
+    <div class="book-btns">
+        <button class="del" data-id=${myLibrary.length-1}>Delete</button>
+        <button class="status" data-id=${myLibrary.length-1}>Toggle</button>
+    </div>
     `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
 }
@@ -91,7 +93,7 @@ const addNewBook = () => {
     </button>
     `
     // Place where the add new book values appears
-    document.getElementsByClassName("add-btn")[0].append(form)
+    document.getElementsByClassName("add-btn-div")[0].append(form)
 
     // Run saveForm() once submit is clicked
     document.querySelector('#submit-me').addEventListener('click', saveForm)

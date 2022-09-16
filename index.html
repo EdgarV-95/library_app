@@ -10,34 +10,50 @@
 </head>
 <body>
     <header><h1>Library App</h1></header>
+    <div class="add-btn-div" style="display: flex;">
+        <button class="add-new">+ Add Book</button>
+    </div>
     <main class="container">
         <div class="book" data-id="0">
             <p class="title">Title: Lord of the Rings</p>
             <p class="author">Author: J.R.R. Tolkein</p>
             <p class="pages">Pages: 1178</p>
             <p class="read" data-id="0">Read: Completed</p>
-            <button class="del" data-id="0">Delete</button>
-            <button class="status" data-id="0">Toggle</button>
+            <div class="book-btns">
+                <button class="del" data-id="0">Delete</button>
+                <button class="status" data-id="0">Toggle</button>
+            </div>
         </div>
         <div class="book" data-id="1">
             <p class="title">Title: Dune</p>
             <p class="author">Author: Frank Herbert</p>
             <p class="pages">Pages: 412</p>
             <p class="read" data-id="1">Read: Completed</p>
-            <button class="del" data-id="1">Delete</button>
-            <button class="status" data-id="1">Toggle</button>
+            <div class="book-btns">
+                <button class="del" data-id="1">Delete</button>
+                <button class="status" data-id="1">Toggle</button>
+            </div>
         </div>
+
+        <!-- <div class="book-btns">
+            <button class="del" data-id="1">
+                <img src="resources/trash-can.png"></button>
+            <button class="status" data-id="1">
+                <img src="resources/toggle-switch.png">
+            </button>
+        </div> -->
+
+
         <div class="book" data-id="2">
             <p class="title">Title: I Am Legend</p>
             <p class="author">Author: Richard Matheson</p>
             <p class="pages">Pages: 160</p>
             <p class="read" data-id="2">Read: Completed</p>
-            <button class="del" data-id="2">Delete</button>
-            <button class="status" data-id="2">Toggle</button>
+            <div class="book-btns">
+                <button class="del" data-id="2">Delete</button>
+                <button class="status" data-id="2">Toggle</button>
+            </div>
         </div>
     </main>
-    <div class="add-btn" style="display: flex;">
-        <button class="add-new">Add new book</button>
-    </div>
 </body>
 </html>
