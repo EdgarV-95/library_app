@@ -40,7 +40,7 @@ body {
 }
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
-/* /*  */ /*  ADD NEW BTN *//*  */ /*  */ /*  */ /**/ 
+/* /*  */ /*  FORM *//*  */ /*  */ /*  */ /**/ 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
 
 .add-new-btn {
@@ -88,7 +88,7 @@ body {
     border-radius: 40px;
     background-color: #fffbfb;
     width: 20%;
-    height: 25%;
+    height: 28%;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -114,15 +114,11 @@ body {
 
 .modal-close {
     position: absolute;
-    top: 1.5vh;
-    right: 1.5vw;
+    top: 0.1vh;
+    right: 0.9vw;
     cursor: pointer;
+    padding-top: 1vh;
 }
-
-/*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
-/* /*  */ /*  FORM *//*  */ /*  */ /*  */ /**/ 
-/*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
-
 
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 

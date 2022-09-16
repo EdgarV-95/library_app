@@ -119,7 +119,7 @@ const addNewBook = () => {
     <button type="button" form="form1" value="Submit" id="submit-me">
         Submit
     </button>
-    <span class="modal-close" id="modal-close">X</span>
+    <img class="modal-close" id="modal-close" src="resources/close.png"></img>
     `
     // Place where the add new book values appears
     document.getElementsByClassName("modal-bg")[0].append(form)
