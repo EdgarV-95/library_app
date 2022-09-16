@@ -31,17 +31,37 @@ const displayBook = () => {
     const newDiv = document.createElement('div')
     newDiv.classList.add(`book`)
     newDiv.setAttribute(`data-id`, `${myLibrary.length-1}`)
-    newDiv.innerHTML = 
-    `<p class="title">Title: ${lastItem.title}</p>
-    <p class="author">Author: ${lastItem.author}</p>
-    <p class="pages">Pages: ${lastItem.pages}</p>
-    <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
-    <div class="book-btns">
-        <img class="del" data-id=${myLibrary.length-1} src="resources/trash-can.png">
-        <img class="status" data-id=${myLibrary.length-1} src="resources/toggle-switch.png">
-    </div>
-    `    
-    document.getElementsByTagName("main")[0].appendChild(newDiv)
+    newDiv.setAttribute(`id`, `${myLibrary.length-1}`)
+    if (lastItem.read === 'Not Read') {
+        newDiv.innerHTML = 
+        `<p class="title">Title: ${lastItem.title}</p>
+        <p class="author">Author: ${lastItem.author}</p>
+        <p class="pages">Pages: ${lastItem.pages}</p>
+        <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
+        <div class="book-btns">
+            <img class="del" data-id=${myLibrary.length-1} src="resources/trash-can.png">
+            <img class="status" data-id=${myLibrary.length-1} src="resources/toggle-switch-off.png">
+        </div>
+        `
+        document.getElementsByTagName("main")[0].appendChild(newDiv)
+        const newBookID = document.getElementById(`${myLibrary.length-1}`)
+        color_1 = "rgba(214, 33, 33)"
+        color_2 = "rgba(199, 44, 44)"
+        color_3 = "rgba(58, 17, 17)"
+        newBookID.style.backgroundImage = "linear-gradient(135deg, "+ color_1 +"0%, "+ color_2 +"50%, "+ color_3 + "100%)"
+    } else {
+        newDiv.innerHTML = 
+        `<p class="title">Title: ${lastItem.title}</p>
+        <p class="author">Author: ${lastItem.author}</p>
+        <p class="pages">Pages: ${lastItem.pages}</p>
+        <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
+        <div class="book-btns">
+            <img class="del" data-id=${myLibrary.length-1} src="resources/trash-can.png">
+            <img class="status" data-id=${myLibrary.length-1} src="resources/toggle-switch.png">
+        </div>
+        `    
+        document.getElementsByTagName("main")[0].appendChild(newDiv)
+    }
 }
 
 // Function to create a dynamic form and save it's values
