@@ -78,6 +78,9 @@ const saveForm = () => {
     // Remove form from html after submit btn has been clicked
     document.querySelector('.create-form').remove();
 
+    // Remove modal overlay after Submit is clicked
+    modalBg.classList.remove('modal-active')
+
     // Update the display to show the newly added book
     displayBook();
 }
@@ -87,7 +90,8 @@ const addNewBook = () => {
     // Create a form
     const form = document.createElement('form')
     form.classList.add('create-form')
-    form.setAttribute('action','*')
+    form.classList.add('modal')
+    form.setAttribute('action','#')
     form.setAttribute("method", "post")
     form.innerHTML =
     `<div>
@@ -102,23 +106,32 @@ const addNewBook = () => {
         <label for="pages">Page number: </label>
         <input type="number" name="pages" id="pages">
     </div>
-    <div>
-        <label for="read">Read: </label>
-        <input type="checkbox" value="Completed" name="read" id="read" class="read">
-        <label for="not-read">Not read: </label>
-        <input type="checkbox" value="Not Read" name="read" id="not-read" class="read">
+    <div class="read-btns">
+        <div class="read1">
+            <label for="read">Read: </label>
+            <input type="checkbox" value="Completed" name="read" id="read" class="read">
+        </div>
+        <div class="read2">
+            <label for="not-read">Not read: </label>
+            <input type="checkbox" value="Not Read" name="read" id="not-read" class="read">
+        </div>
     </div>
     <button type="button" form="form1" value="Submit" id="submit-me">
         Submit
     </button>
+    <span class="modal-close" id="modal-close">X</span>
     `
     // Place where the add new book values appears
-    document.getElementsByClassName("add-btn-div")[0].append(form)
+    document.getElementsByClassName("modal-bg")[0].append(form)
+    // Maybe add form to the modal div?
 
     // Run saveForm() once submit is clicked
     document.querySelector('#submit-me').addEventListener('click', saveForm)
+
+    // Remove the modal's gray overlay after the X is clicked 
+    document.querySelector('#modal-close').addEventListener('click', exitOverlay)
 }
-const addNewBtn = document.querySelector('.add-new')
+const addNewBtn = document.querySelector('.modal-btn')
 addNewBtn.addEventListener('click', addNewBook)
 
 // Function to TOGGLE read and unread status
@@ -157,3 +170,19 @@ const removeBook = (e) => {
     }
 }
 document.querySelector('.container').addEventListener('click', removeBook)
+
+// Modal variables
+const modalBtn = document.querySelector('.modal-btn')
+const modalBg = document.querySelector('.modal-bg')
+const modalClose = document.querySelector('.modal-close')
+
+// Adds gray overlay from .modal-active to the page
+modalBtn.addEventListener('click', function(){
+    modalBg.classList.add('modal-active')
+})
+
+// Resets the form and removes gray overlay
+const exitOverlay = () => {
+    document.querySelector('.create-form').remove();
+    modalBg.classList.remove('modal-active')
+}
