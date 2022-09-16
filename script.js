@@ -37,8 +37,8 @@ const displayBook = () => {
     <p class="pages">Pages: ${lastItem.pages}</p>
     <p class="read" data-id=${myLibrary.length-1}>Read: ${lastItem.read}</p>
     <div class="book-btns">
-        <button class="del" data-id=${myLibrary.length-1}>Delete</button>
-        <button class="status" data-id=${myLibrary.length-1}>Toggle</button>
+        <img class="del" data-id=${myLibrary.length-1} src="resources/trash-can.png">
+        <img class="status" data-id=${myLibrary.length-1} src="resources/toggle-switch.png">
     </div>
     `    
     document.getElementsByTagName("main")[0].appendChild(newDiv)
@@ -104,11 +104,17 @@ addNewBtn.addEventListener('click', addNewBook)
 // Function to TOGGLE read and unread status
 const toggleStatus = (e) => {
     const readDiv = document.body.querySelector('.read[data-id="' + e.target.dataset.id + '"]')
+    const toggleIcon = document.body.querySelector('.status[data-id="' + e.target.dataset.id + '"]')
 
-    if (readDiv.innerHTML === 'Read: Completed') readDiv.innerHTML = 'Read: Pending'
-    else readDiv.innerHTML = 'Read: Completed'
+    if (readDiv.innerHTML === 'Read: Completed') {
+        readDiv.innerHTML = 'Read: Pending'
+        toggleIcon.src = "resources/toggle-switch-off.png"
+
+    } else {
+        readDiv.innerHTML = 'Read: Completed'
+        toggleIcon.src = "resources/toggle-switch.png"
+    }
     myLibrary[e.target.dataset.id].changeStatus()
-    console.log(myLibrary[e.target.dataset.id])
 }
 document.querySelector('.container').addEventListener('click', toggleStatus)
 
