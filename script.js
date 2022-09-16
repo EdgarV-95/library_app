@@ -105,14 +105,19 @@ addNewBtn.addEventListener('click', addNewBook)
 const toggleStatus = (e) => {
     const readDiv = document.body.querySelector('.read[data-id="' + e.target.dataset.id + '"]')
     const toggleIcon = document.body.querySelector('.status[data-id="' + e.target.dataset.id + '"]')
+    const bookDiv = document.body.querySelector('.book[data-id="' + e.target.dataset.id + '"]')
 
     if (readDiv.innerHTML === 'Read: Completed') {
         readDiv.innerHTML = 'Read: Pending'
         toggleIcon.src = "resources/toggle-switch-off.png"
+        bookDiv.style.background = "#fffbfb"
 
     } else {
         readDiv.innerHTML = 'Read: Completed'
         toggleIcon.src = "resources/toggle-switch.png"
+        color_1 = "rgba(24, 77, 104, 0.8)"
+        color_2 = "rgba(87, 202, 133, 0.8)"
+        bookDiv.style.backgroundImage = "linear-gradient(135deg, "+ color_1 +"0%, "+ color_2 +"100%)"
     }
     myLibrary[e.target.dataset.id].changeStatus()
 }
