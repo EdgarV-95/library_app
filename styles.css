@@ -68,8 +68,8 @@ button {
 .book {
     cursor: pointer;
     border: 1px solid black;
-    height: 30vh;
-    width: 11.5vw;
+    height: 35vh;
+    width: 15vw;
     display: flex;
     margin-left: 1.5vw;
     flex-direction: column;
