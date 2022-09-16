@@ -95,16 +95,16 @@ const addNewBook = () => {
     form.setAttribute("method", "post")
     form.innerHTML =
     `<div>
-        <label for="title">Title of book: </label>
-        <input type="text" name="title" id="title">
+        <label for="title">*Title of book: </label>
+        <input type="text" name="title" id="title" value="" required>
     </div>
     <div>
-        <label for="author">Author name: </label>
-        <input type="text" name="author" id="author">
+        <label for="author">*Author name: </label>
+        <input type="text" name="author" id="author" value="" required>
     </div>
     <div>
-        <label for="pages">Page number: </label>
-        <input type="number" name="pages" id="pages">
+        <label for="pages">*Page number: </label>
+        <input type="number" name="pages" id="pages" value="" required>
     </div>
     <div class="read-btns">
         <div class="read1">
@@ -121,9 +121,13 @@ const addNewBook = () => {
     </button>
     <img class="modal-close" id="modal-close" src="resources/close.png"></img>
     `
+
+    // FYI - I should've used <input type="submit"> instead of <button type="button" ,
+    // but since the form is not connected to any database it will just throw an error
+    // and crash the app
+
     // Place where the add new book values appears
     document.getElementsByClassName("modal-bg")[0].append(form)
-    // Maybe add form to the modal div?
 
     // Run saveForm() once submit is clicked
     document.querySelector('#submit-me').addEventListener('click', saveForm)

@@ -1,3 +1,8 @@
+:root {
+    --white: #fffbfb;
+    --button-color: #2596be;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +13,7 @@
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
 
 header {
-    background-color: #fffbfb;
+    background-color: var(--white);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px;
     display: flex;
     justify-content: space-around;
@@ -36,7 +41,7 @@ h2 {
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
 
 body {
-    background-color: #f0eef1;;
+    background-color: #f0eef1;
 }
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
@@ -53,7 +58,7 @@ body {
 
 .modal-btn {
     border: none;
-    background-color: #2596be;
+    background-color: var(--button-color);
     color: black;
     font-weight: bold;
     cursor: pointer;
@@ -86,7 +91,7 @@ body {
 .modal {
     position: relative;
     border-radius: 40px;
-    background-color: #fffbfb;
+    background-color: var(--white);
     width: 20%;
     height: 28%;
     display: flex;
@@ -108,7 +113,7 @@ body {
     height: 4vh;
     border-radius: 45px;
     border: none;
-    background-color: #2596be;
+    background-color: var(--button-color);
     font-weight: bold;
 }
 
@@ -120,6 +125,11 @@ body {
     padding-top: 1vh;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ /*  */ 
 /* /*  */ /*  CONTAINER *//*  */ /*  */ /*  */ /**/ 
