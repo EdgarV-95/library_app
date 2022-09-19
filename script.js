@@ -1,26 +1,51 @@
 const myLibrary = []
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    this.changeStatus = () => {
-        if(this.read === false) this.read = true
-        else this.read = false
-    }
-}
+// Constructor function
+// const personFactory = (name, age) => {
+//     const sayHello = () => console.log('hello!');
+//     return { name, age, sayHello };
+//   };
+  
+//   const jeff = personFactory('jeff', 27);
 
-const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
-const dune = new Book(`Title: Dune`, `Author: Frank Herbert`, `Pages: 412`, `Read: true`)
-const legend = new Book(`Title: I Am Legend`, `Author: Richard Matheson`, `Pages: 160`, `Read: true`)
+// function Book(title, author, pages, read) {
+//     this.title = title
+//     this.author = author
+//     this.pages = pages
+//     this.read = read
+//     this.changeStatus = () => {
+//         if(this.read === false) this.read = true
+//         else this.read = false
+//     }
+// }
+
+// const lotr = new Book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
+// const dune = new Book(`Title: Dune`, `Author: Frank Herbert`, `Pages: 412`, `Read: true`)
+// const legend = new Book(`Title: I Am Legend`, `Author: Richard Matheson`, `Pages: 160`, `Read: true`)
+
+
+// Factory function
+const book = (title, author, pages, read) => {
+    const changeStatus = () => {
+        if(read === false) read = true
+        else read = false
+    };
+    return {title, author, pages, read, changeStatus}
+};
+
+const lotr = book(`Title: Lord of the Rings`, `Author: J.R.R. Tolkein`, `Pages: 310`, `Read: true`)
+const dune = book(`Title: Dune`, `Author: Frank Herbert`, `Pages: 412`, `Read: true`)
+const legend = book(`Title: I Am Legend`, `Author: Richard Matheson`, `Pages: 160`, `Read: true`)
+
 myLibrary.push(lotr)
 myLibrary.push(dune)
 myLibrary.push(legend)
 
 const addBookToLibrary = (title, author, pages, read) => {
-    const book = new Book(title, author, pages, read)
-    myLibrary.push(book)
+    // const book = new Book(title, author, pages, read)
+    // myLibrary.push(book)
+    const newBook = book(title, author, pages, read)
+    myLibrary.push(newBook)
 }
 
 const displayBook = () => {
